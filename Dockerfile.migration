@@ -1,0 +1,19 @@
+FROM node:20-alpine AS migration
+
+WORKDIR /home/node/app
+
+# Install dependencies
+COPY package.json yarn.lock ./
+
+# Install dependencies
+RUN yarn install \
+  --prefer-offline \
+  --frozen-lockfile \
+  --non-interactive \
+  --production=false
+
+# Copy the rest of the application code
+COPY db ./db
+COPY .sequelizerc ./
+
+CMD ["sh", "-c", "npx sequelize db:migrate && npx sequelize db:seed:all"]

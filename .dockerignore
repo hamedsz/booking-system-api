@@ -1,0 +1,21 @@
+# ignore
+node_modules
+npm-debug.log
+docker-compose*.yml
+docker/**
+.dockerignore
+.vscode
+.env*
+.gitignore
+.git
+.editorconfig
+README.md
+LICENSE
+dist
+test
+deploy
+warp
+postgres_data
+
+# allow
+!/docker/app/**

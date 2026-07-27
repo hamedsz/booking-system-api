@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    restart: always
+    deploy:
+      replicas: 3
+    environment:
+      - APP_PORT=${APP_PORT}
+      - BACKEND_HOST=${BACKEND_HOST}
+      - CACHE_DRIVER=${CACHE_DRIVER}
+      - CACHE_PREFIX=${CACHE_PREFIX}
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_PORT=${DB_PORT}
+      - DB_USERNAME=${DB_USERNAME}
+      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS}
+      - GOOGLE_SEARCH_API_KEY=${GOOGLE_SEARCH_API_KEY}
+      - GOOGLE_SEARCH_CX=${GOOGLE_SEARCH_CX}
+      - IS_DEBUG=${IS_DEBUG}
+      - JWT_SECRET=${JWT_SECRET}
+      - NODE_ENV=${NODE_ENV}
+      - PAYMENT_MODE=${PAYMENT_MODE}
+      - PIXABAY_API_KEY=${PIXABAY_API_KEY}
+      - REDIS_DB=${REDIS_DB}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+      - SENTRY_DSN=${SENTRY_DSN}
+      - TELEGRAM_BOT_ID=${TELEGRAM_BOT_ID}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_BOT_URL=${TELEGRAM_BOT_URL}
+      - TELEGRAM_WEB_APP_URL=${TELEGRAM_WEB_APP_URL}
+      - WEB_APP_URL=${WEB_APP_URL}
+      - ZARINPAL_MARCHANT_KEY=${ZARINPAL_MARCHANT_KEY}
+      - ADMIN_TELEGRAM_BOT_TOKEN=${ADMIN_TELEGRAM_BOT_TOKEN}
+      - ADMIN_TELEGRAM_CHAT_ID=${ADMIN_TELEGRAM_CHAT_ID}
+    networks:
+      - coolify
+    volumes:
+      - /data/coolify/applications/uo8ow0cwkskk8c088wkkgcw0/home/node/app/sa.json:/home/node/app/sa.json
+
+networks:
+  coolify:
+    external: true

@@ -1,0 +1,84 @@
+{
+  "name": "gpt4admin-instagram",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "NODE_ENV=production rimraf ./dist && babel ./src -d ./dist --copy-files --source-maps",
+    "start": "node ./dist/app.js",
+    "worker": "node ./dist/worker.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "dev": "nodemon src/app.js --exec babel-node",
+    "dev:worker": "nodemon src/worker.js --exec babel-node",
+    "migrate": "sequelize db:migrate",
+    "seed": "sequelize db:seed:all",
+    "migrate:staging": "NODE_ENV=staging sequelize db:migrate",
+    "seed:staging": "NODE_ENV=staging sequelize db:seed:all",
+    "migrate:production": "NODE_ENV=production sequelize db:migrate",
+    "seed:production": "NODE_ENV=production sequelize db:seed:all"
+  },
+  "main": "src/app.js",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": true
+          }
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.24.0",
+    "@babel/node": "^7.23.9",
+    "@babel/preset-env": "^7.24.0",
+    "@sentry/node": "^8.2.1",
+    "@sentry/profiling-node": "^8.2.1",
+    "axios": "^1.6.7",
+    "axios-retry": "^4.5.0",
+    "bcrypt": "^5.1.1",
+    "bullmq": "^5.58.5",
+    "cache-manager": "3.4.4",
+    "cache-manager-redis-store": "2.0.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto-random-string": "^5.0.0",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.18.3",
+    "express-rate-limit": "^5.3.0",
+    "file-type": "16.5.0",
+    "handlebars": "^4.7.9",
+    "helmet": "^7.1.0",
+    "http": "^0.0.1-security",
+    "jose": "^5.2.3",
+    "jsonwebtoken": "^9.0.2",
+    "moment-mini": "^2.24.0",
+    "moment-timezone": "^0.5.46",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^9.0.3",
+    "pg": "^8.11.3",
+    "rate-limit-redis": "^2.1.0",
+    "sequelize": "^6.37.1",
+    "sequelize-cli": "^6.6.2",
+    "serialize-error": "^8.1.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "uuid": "^9.0.1",
+    "validatorjs": "^3.22.1",
+    "winston": "^3.13.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "husky": "8.0.1",
+    "lint-staged": "^15.2.2",
+    "nodemon": "^3.1.0"
+  }
+}

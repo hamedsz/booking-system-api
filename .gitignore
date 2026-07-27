@@ -1,0 +1,13 @@
+node_modules
+.env
+warp
+dist
+postgres_data
+.idea
+.eslintcache
+files
+uploads
+.aider.*
+firebase-service-account.json
+logs
+yarn-error.log
