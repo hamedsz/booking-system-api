@@ -33,8 +33,6 @@ class BookingService {
       to: dayEnd,
     });
 
-    console.log(dailySlots[0], startDateTime, endDateTime);
-
     const isValidAndAvailableSlot = dailySlots.find(
       (slot) => slot.start === startDateTime && slot.end === endDateTime && slot.available,
     );

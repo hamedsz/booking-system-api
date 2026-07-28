@@ -3,6 +3,8 @@ import bookingService from '../services/BookingService';
 import MentorNotFoundError from '../errors/MentorNotFoundError';
 import MentorNotAcceptBookingError from '../errors/MentorNotAcceptBookingError';
 import bookingTransformer from '../transformers/BookingTransformer';
+import SlotNotAvailableError from '../errors/SlotNotAvailableError';
+import SlotAlreadyBookedError from '../errors/SlotAlreadyBookedError';
 
 export default class MentorHandler extends BaseHandler {
   static async availablities(req) {
@@ -71,6 +73,12 @@ export default class MentorHandler extends BaseHandler {
       }
       if (err instanceof MentorNotAcceptBookingError) {
         throw this.createForbidden('not_accept_booking', err.message);
+      }
+      if (err instanceof SlotNotAvailableError) {
+        throw this.createValidationError('slot_not_available', err.message);
+      }
+      if (err instanceof SlotAlreadyBookedError) {
+        throw this.createValidationError('slot_already_booked', err.message);
       }
       throw err;
     }
